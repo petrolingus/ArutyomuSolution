@@ -1,32 +1,29 @@
 #include <iostream>
 #include <string>
 
-int main()
-{
+int main() {
+
     // Create string
-    const char* str = "strin";
+    const char *str = "string";
 
     // Computing length of string
     size_t n = 0;
-    while (true)
-    {
-        if (*(str + ++n) == '\0')
-        {
+    while (true) {
+        if (*(str + n++) == '\0') {
             break;
         }
     }
 
-    size_t result_n = 2 * n;
-    char* result = new char[result_n];
-    for (int i = 0; i < result_n; i++)
-    {
-        *(result + i) = str[i % 3 + 3 * (i / 6)];
+    size_t resultN = 2 * n;
+    char *result = new char[resultN];
+    for (int i = 0; i < resultN; i++) {
+        size_t id = i % 3 + 3 * (i / 6);
+        *(result + i) = str[id];
     }
-//    *(result + result_n) = '\0';
 
-    std::cout << n << " " << result << std::endl;
+    std::cout << str << " -> " << result << std::endl;
 
     // Delete pointers
-    /*delete str;
-    delete result;*/
+    delete str;
+    delete[] result;
 }
